@@ -79,6 +79,7 @@ namespace pryIE1_Biblioteca
             String cID = (CategID).ToString();
             Agregar.WriteLine(ID + '|' + txtTitulo.Text + '|' + txtAutor.Text + '|' + cID + '|' + txtCant.Text);
             Agregar.Close();
+            MessageBox.Show("Libro agregado", "Libros", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
