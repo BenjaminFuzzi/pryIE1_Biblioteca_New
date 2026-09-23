@@ -33,19 +33,40 @@ namespace pryIE1_Biblioteca
 
         }
         private void btnBuscar_Click(object sender, EventArgs e) {
-            dgvLibros.Rows.Clear();
-            StreamReader leer = new StreamReader("Libros.txt");
-            do {
-                string registro = leer.ReadLine();
-                if (registro != null) {
-                    string[] campos = registro.Split('|');
-                    if (campos[1].Contains(txtNombreLibro.Text)) {
-                        string categ = devolverCategoria(campos[3]);
-                        dgvLibros.Rows.Add(campos[0], campos[1], campos[2], categ, campos[4]);
+            if (txtNombreLibro.Text != string.Empty) {
+                dgvLibros.Rows.Clear();
+                StreamReader leer = new StreamReader("Libros.txt");
+                bool flag = false;
+                do
+                {
+                    string registro = leer.ReadLine();
+                    if (registro != null)
+                    {
+                        string[] campos = registro.Split('|');
+                        if (campos[1].Contains(txtNombreLibro.Text))
+                        {
+                            string categ = devolverCategoria(campos[3]);
+                            dgvLibros.Rows.Add(campos[0], campos[1], campos[2], categ, campos[4]);
+                            flag = true;
+                        }
                     }
+                } while (!leer.EndOfStream);
+                leer.Close();
+                if (flag == true)
+                {
+                    MessageBox.Show("Libro(s) encontrado(s).", "Libros", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            } while (!leer.EndOfStream);
-            leer.Close();
+                else
+                {
+                    MessageBox.Show("Libro no encontrado.", "Libros", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else {
+                MessageBox.Show("Ingrese el título del libro que busca.", "Libros", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+            
         }
         public void CargarCBX() {
             StreamReader leer = new StreamReader("Categorias.txt");
@@ -83,29 +104,40 @@ namespace pryIE1_Biblioteca
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            dgvLibros.Rows.Clear();
-            StreamReader leer = new StreamReader("Categorias.txt");
-            StreamReader leerLibros = new StreamReader("Libros.txt");
-            do
-            {
-                string registro = leer.ReadLine();
-                if (registro != null)
+            if (cbxCateg.Text != String.Empty) {
+                dgvLibros.Rows.Clear();
+                StreamReader leer = new StreamReader("Categorias.txt");
+                StreamReader leerLibros = new StreamReader("Libros.txt");
+                do
                 {
-                    string[] campos = registro.Split('|');
-                    if (campos[1].Contains(cbxCateg.Text)) {
-                        do {
-                            string registro2 = leerLibros.ReadLine();
-                            string[] campos2 = registro2.Split('|');
-                            if (campos2[3] == campos[0]) {
-                                string categ = devolverCategoria(campos2[3]);
-                                dgvLibros.Rows.Add(campos[0], campos2[1], campos2[2], categ, campos2[4]);
-                            }
-                        } while (!leerLibros.EndOfStream);
+                    string registro = leer.ReadLine();
+                    if (registro != null)
+                    {
+                        string[] campos = registro.Split('|');
+                        if (campos[1].Contains(cbxCateg.Text))
+                        {
+                            do
+                            {
+                                string registro2 = leerLibros.ReadLine();
+                                string[] campos2 = registro2.Split('|');
+                                if (campos2[3] == campos[0])
+                                {
+                                    string categ = devolverCategoria(campos2[3]);
+                                    dgvLibros.Rows.Add(campos[0], campos2[1], campos2[2], categ, campos2[4]);
+                                }
+                            } while (!leerLibros.EndOfStream);
+                        }
                     }
-                }
-            } while (!leer.EndOfStream);
-            leer.Close();
-            leerLibros.Close();
+                } while (!leer.EndOfStream);
+                leer.Close();
+                leerLibros.Close();
+            }
+            else {
+                MessageBox.Show("Ingrese una categoría.", "Libros", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+            
         }
     }
 }

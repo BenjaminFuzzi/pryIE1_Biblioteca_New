@@ -58,7 +58,5 @@ namespace pryIE1_Biblioteca
             leer.Close();
             return categ;
         }
-
-
     }
 }
