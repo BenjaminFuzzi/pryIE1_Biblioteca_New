@@ -64,11 +64,23 @@
     <Compile Include="frmListarLibros.Designer.cs">
       <DependentUpon>frmListarLibros.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListarPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarPrestamos.Designer.cs">
+      <DependentUpon>frmListarPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNuevoLibro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmNuevoLibro.Designer.cs">
       <DependentUpon>frmNuevoLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuevoPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNuevoPrestamo.Designer.cs">
+      <DependentUpon>frmNuevoPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +93,14 @@
     <EmbeddedResource Include="frmListarLibros.resx">
       <DependentUpon>frmListarLibros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListarPrestamos.resx">
+      <DependentUpon>frmListarPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoLibro.resx">
       <DependentUpon>frmNuevoLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoPrestamo.resx">
+      <DependentUpon>frmNuevoPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

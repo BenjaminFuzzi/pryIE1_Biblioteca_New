@@ -19,6 +19,7 @@ namespace pryIE1_Biblioteca
         frmListarLibros ListarLibros = new frmListarLibros();
         frmBuscarLibro BuscarLibro = new frmBuscarLibro();
         frmNuevoLibro NuevoLibro = new frmNuevoLibro();
+        frmListarPrestamos ListarPrestamos = new frmListarPrestamos();
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -39,6 +40,12 @@ namespace pryIE1_Biblioteca
         private void nuevoLibroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NuevoLibro.Show();
+            this.Hide();
+        }
+
+        private void listarPréstamosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarPrestamos.Show();
             this.Hide();
         }
     }
